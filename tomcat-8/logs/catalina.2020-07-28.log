@@ -1,0 +1,6 @@
+28-Jul-2020 00:01:52.039 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+28-Jul-2020 00:01:52.044 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+28-Jul-2020 00:01:52.806 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service [Catalina]
+28-Jul-2020 00:01:53.087 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+28-Jul-2020 00:01:53.129 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+28-Jul-2020 00:02:03.971 SEVERE [main] org.apache.catalina.startup.Catalina.stopServer Could not contact [localhost:8005]. Tomcat may not be running.
