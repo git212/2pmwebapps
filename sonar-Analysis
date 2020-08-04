@@ -1,0 +1,39 @@
+def sonarHost= "http://172.31.40.139:9000"
+
+pipeline{
+    
+    agent any
+    
+    environment{
+        PATH = "${PATH}:${tool name: 'maven3', type: 'maven'}/bin"
+    }
+    
+    stages{
+        stage('SCM Checkout'){
+            steps{
+                git url: 'https://github.com/git212/2pmwebapps'
+            }
+            
+        }
+      
+        stage('sonar Analysis'){
+            steps{
+                withSonarQubeEnv('sonar8') { 
+                   sh "mvn sonar:sonar"
+                }
+            }
+        }
+         stage('Check Sonar Status'){
+             steps{
+               timeout(time: 1, unit: 'HOURS') {
+                script{
+                    def qg = waitForQualityGate()
+                    if (qg.status != 'OK') {
+                        error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                    }
+              }
+            }
+          }
+        }
+    }
+}
